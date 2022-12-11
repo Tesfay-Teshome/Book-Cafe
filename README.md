@@ -1,6 +1,5 @@
 # What-To-Read
 ## Book Recommender Web-App
----
 
 So many books, so little time.
 
