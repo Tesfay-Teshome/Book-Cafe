@@ -6,7 +6,7 @@ So many books, so little time.
 ### Team
 1. Biruk Gelelcha :- Will work on the Back-end of the project as he has an earlier experience on the backend language he is  planning to use on this project as well as he is energetic.
 2. Dagmawi Andualem:- Will work on the Front-end of the project and he has a creative and artistic mind on graphic designs.
-3. Tesfay Teshome:- Will work on the Front-end and assist a small portion of the Back-end ambitious to see the fruit of hard work and have some experience on HTML, CSS and JavaScript.
+3. Tesfay Teshome:- Will work on the Front-end and assist a small portion of the Back-end ambitious to see the fruit of hard work with good experience on HTML, CSS and JavaScript.
 
 ## Technologies
 ### Python
