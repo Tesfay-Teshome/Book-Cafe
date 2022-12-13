@@ -55,6 +55,7 @@ h2{
     font-size: 16px;
     color: #fff;
     pointer-events: none;
+    transition: .5s;
 }
 .input-group input{
     width: 320px;
@@ -65,6 +66,11 @@ h2{
     background: transparent;
     border: none;
     outline: none;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+    top: -5px;
 }
 
 .remember{
@@ -129,9 +135,20 @@ button{
     text-align: center;
     line-height: 35px;
     margin: 15px 6px 0;
+    transition: .3s;
+}
+
+.social-icons a:hover {
+    background: #fff;
 }
 
 .social-icons a i {
     color: #0857bd;
     font-size: 14px;
+    transition: .3s;
+}
+
+.social-icons a:hover i {
+    color: rgba(3, 12, 65, 0.952);
+    
 }
