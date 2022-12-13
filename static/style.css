@@ -35,6 +35,15 @@ body{
     height: 100%;
 }
 
+.warpper .from-warpper.sign-in {
+    transform: scale(0);
+} 
+
+.warpper .from-warpper.sign-up {
+    position: absolute;
+    top: 0;
+    transform: scale(1);
+} 
 h2{
     font-size: 30px;
     color: #fff;
@@ -123,6 +132,26 @@ button{
     font-size: 14px;
     color: #fff;
     text-align: center;
+}
+
+.signin-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.signin-link p{
+    color: #fff;
+}
+
+.signin-link p a{
+    color:#0857bd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signin-link p a:hover{
+    text-decoration: underline;
 }
 
 .social-icons a {
