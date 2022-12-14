@@ -2,7 +2,7 @@ import sqlite3
 from flask import Flask, redirect, url_for, render_template, request, session
 
 def register_user_to_db(username, password):
-     conn = sqlite3.connect('database.db' db.sql)
+     conn = sqlite3.connect('database.db')
      cur = conn.cursor()
      cur.execute('INSERT INTO users(username, password) values (?,?)', (username, password))
      conn.commit()
@@ -28,6 +28,3 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-    
-      
