@@ -164,7 +164,7 @@ button{
     text-align: center;
     line-height: 35px;
     margin: 15px 6px 0;
-    transition: .3s;
+    transition: .5s;
 }
 
 .social-icons a:hover {
