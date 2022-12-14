@@ -24,7 +24,7 @@ app.secret_key = 'BookCafe@tesdagyaf'
 
 @app.route("/")
 def index():
-    return "Working"
+    return render_template('login.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
