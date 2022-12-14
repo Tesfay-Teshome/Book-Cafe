@@ -26,5 +26,17 @@ app.secret_key = 'BookCafe@tesdagyaf'
 def index():
     return render_template('login.html')
 
+@app.route('/register.html', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        register_user_to_db(username, password)
+        return redirect(url_for('index'))
+    
+    else:
+        return render_template('register.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
