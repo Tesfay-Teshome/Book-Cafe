@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(/Book-Recommender_Project/templates/img/lib1.jpg) no-repeat center center fixed; 
+    background: url(/BookCafe/templates/img/lib1.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
