@@ -1,44 +1,54 @@
-import sqlite3 
-from flask import Flask, redirect, url_for, render_template, request, session
-
-def register_user_to_db(username, email, password):
-     conn = sqlite3.connect('database.db')
-     cur = conn.cursor()
-     cur.execute('INSERT INTO users(username, email, password) values (?,?,?)', (username, email, password))
-     conn.commit()
-     conn.close()
-
-def check_user(username, email, password):
-    conn = sqlite3.connect('database.db')
-    cur = conn.cursor()
-    cur.execute('Select username, email, password FROM users WHERE username=? and email=? and password=?', (username, email, password))
-    
-    result = cur.fetchone()
-    if result:
-        return True
-    else:
-        return False
+from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.secret_key = 'BookCafe@tesdagyaf'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = 'BookCafetesyafdag'
+db = SQLAlchemy(app)
+
+
+class user(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+    email = db.Column(db.String(120))
+    password = db.Column(db.String(80))
+
 
 @app.route("/")
-@app.route("/login.html")
 def index():
-    return render_template('login.html')
+    return render_template("index.html")
 
-@app.route('/register.html', methods=['POST', 'GET'])
+@app.route("/home")
+def home():
+     return render_template("home.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        login = user.query.filter_by(username=username, password=password).first()
+        if login is not None:
+            return redirect(url_for("home"))
+    return render_template("login.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        
-        register_user_to_db(username, email, password)
-        return redirect(url_for('index'))
-    
-    else:
-        return render_template('register.html')
+
+        register = user(username=username, email=email, password=password)
+        db.session.add(register)
+        db.session.commit()
+
+        return redirect(url_for("login"))
+    return render_template("register.html")
+
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)

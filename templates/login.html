@@ -14,11 +14,11 @@
         <form action="/login" method="post">
             <h2>Sign In</h2>
             <div class="input-group">
-                <input type="text" id="Username" name="username" required>
+                <input type="text" id="username"  placeholder="" name="username" required>
                 <label for="">Username</label>
             </div>
             <div class="input-group">
-                <input type="password" id="Password" name="password" required>
+                <input type="password" placeholder="" id="password" name="password" required>
                 <label for="">Password</label>
             </div>
             <div class="remember">
@@ -26,9 +26,9 @@
                     <input type="checkbox"> Remember me
                 </label>
             </div>
-            <button type="submit">Sign In</button>
+            <button type="submit" id="submit">Sign In</button>
             <div class="signup-link">
-                <p>Don't have an account? <a href="register.html" class="signUpBtn-link">Sign Up</a></p>
+                <p>Don't have an account? <a href="{{url_for('register')}}" class="signUpBtn-link">Sign Up</a></p>
             </div>
             <div class="social-platform">
                 <p>Or Sign in with</p>

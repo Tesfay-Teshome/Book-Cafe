@@ -14,15 +14,15 @@
           <form action="/register" method="post">
               <h2>Sign Up</h2>
               <div class="input-group">
-                  <input type="text" required>
+                  <input type="text" id="username"  placeholder="" name="username" required>
                   <label for="">Username</label>
               </div>
               <div class="input-group">
-                <input type="email" id="Email" name="email" required>
+                <input type="email" id="email"  placeholder="" name="email" required>
                 <label for="">Email</label>
             </div>
               <div class="input-group">
-                  <input type="password" required>
+                  <input type="password" class="form-control"  id="password" name="password" required>
                   <label for="">Password</label>
               </div>
               <div class="remember">
@@ -30,9 +30,9 @@
                       <input type="checkbox"> I agree with terms & conditions
                   </label>
               </div>
-              <button type="submit">Sign Up</button>
+              <button type="submit" id="Submit">Sign Up</button>
               <div class="signin-link">
-                  <p>Already have an Account? <a href="login.html" class="signInBtn-link">Sign In</a></p>
+                  <p>Already have an Account? <a href="{{url_for('login')}}" class="signInBtn-link">Sign In</a></p>
               </div>
           </form>
       </div>
