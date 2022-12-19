@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'BookCafetesyafdag'
 db = SQLAlchemy(app)
 
@@ -16,11 +17,11 @@ class user(db.Model):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route("/home")
 def home():
-     return render_template("home.html")
+    return render_template("home.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -33,7 +34,9 @@ def login():
             return redirect(url_for("home"))
     return render_template("login.html")
 
-
+@app.route('/logout')
+def logout():
+    return render_template('login.html')
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
