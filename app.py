@@ -24,12 +24,14 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-
+        
         login = user.query.filter_by(username=username, password=password).first()
         if login is not None:
             return redirect(url_for("home"))
-    flash("", category='danger')    
-    return render_template("login.html" )
+        
+        else:
+            flash("", category='danger')
+    return render_template("login.html")
 
 
 @app.route('/logout')
