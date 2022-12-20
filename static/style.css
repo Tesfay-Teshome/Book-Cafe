@@ -6,7 +6,13 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+p{
+    position: relative;
+    background-color: rgb(245, 202, 202);
+    color: red;
+    font-size: 2px;
 
+}
 body{
     display: flex;
     justify-content: center;

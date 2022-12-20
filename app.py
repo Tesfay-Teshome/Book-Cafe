@@ -10,18 +10,14 @@ db = SQLAlchemy(app)
 
 class user(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80))
-    email = db.Column(db.String(120))
-    password = db.Column(db.String(80))
+    username = db.Column(db.String(80), nullable=False, unique=True)
+    email = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(80), nullable=False)
 
 
 @app.route("/")
 def index():
     return render_template("login.html")
-
-@app.route("/home")
-def home():
-    return render_template("home.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -32,7 +28,9 @@ def login():
         login = user.query.filter_by(username=username, password=password).first()
         if login is not None:
             return redirect(url_for("home"))
-    return render_template("login.html")
+    flash("", category='danger')    
+    return render_template("login.html" )
+
 
 @app.route('/logout')
 def logout():
@@ -51,6 +49,9 @@ def register():
         return redirect(url_for("login"))
     return render_template("register.html")
 
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
 if __name__ == "__main__":
     db.create_all()
