@@ -16,7 +16,7 @@
     {% for message in get_flashed_messages() %}
             {{ message }}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <p font-size="2">Incorrect Username or Password</p>
+                <p margin="center">Incorrect Username or Password</p>
                 {{ message }}
             </div>
             {% endfor %} 
@@ -33,11 +33,7 @@
                 <input class="fa-brand" type="password" placeholder="" id="password" name="password" required>
                 <label for=""><i class="fa-solid fa-lock"></i> Password</label>
             </div>
-            <div class="remember">
-                <label for="">
-                    <input type="checkbox"> Remember me
-                </label>
-            </div>
+            
             <button type="submit" id="submit">Sign In</button>
             <div class="signup-link">
                 <p>Don't have an account? <a href="{{url_for('register')}}" class="signUpBtn-link">Sign Up</a></p>

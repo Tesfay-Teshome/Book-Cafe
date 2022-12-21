@@ -1,4 +1,5 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -6,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'BookCafetesyafdag'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 class user(db.Model):
@@ -13,6 +15,7 @@ class user(db.Model):
     username = db.Column(db.String(80), nullable=False, unique=True)
     email = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(80), nullable=False)
+    confirm_password = db.Column(db.String(80), nullable=False)
 
 
 @app.route("/")
@@ -39,12 +42,15 @@ def logout():
     return render_template('login.html')
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == "POST":
+    if request.method == "POST": 
+        
+        
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        confirm_password = request.form['confirm_password']
 
-        register = user(username=username, email=email, password=password)
+        register = user(username=username, email=email, password=password, confirm_password=confirm_password)
         db.session.add(register)
         db.session.commit()
 
