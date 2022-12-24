@@ -14,10 +14,9 @@
     
   <div class="warpper">
     {% for message in get_flashed_messages() %}
-            {{ message }}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <p margin="center">Incorrect Username or Password</p>
-                {{ message }}
+
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                 <P margin="center">{{ message }}</P>
             </div>
             {% endfor %} 
     <div class="from-warpper sign in">

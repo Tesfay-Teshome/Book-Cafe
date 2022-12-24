@@ -33,7 +33,7 @@ def login():
             return redirect(url_for("home"))
         
         else:
-            flash("", category='danger')
+            flash("Incorrect Username or Password!", category='danger')
     return render_template("login.html")
 
 
@@ -48,15 +48,15 @@ def register():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        confirm_password = request.form['confirm_password']
-
+        confirm_password = request.form['confirm_password']    
         register = user(username=username, email=email, password=password, confirm_password=confirm_password)
         db.session.add(register)
         db.session.commit()
-
+        flash("Registred successfully", category='success')
         return redirect(url_for("login"))
+    
     return render_template("register.html")
-
+        
 @app.route("/home")
 def home():
     return render_template("home.html")
