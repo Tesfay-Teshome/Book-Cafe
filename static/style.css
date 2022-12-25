@@ -19,8 +19,8 @@ body{
     background-size: cover;;
 }
 .alert p{
-    position: relative;
-    font-size: 15px;
+    position: center;
+    font-size: 13px;
     margin: center;
     align-items: center;
     
