@@ -37,7 +37,8 @@
                         <div class="form-outline flex-fill mb-0">
                           <label class="form-label" for="category">Favorite category</label><br>
                           {% for category in favorite_category %}
-                          {{category.category}} <input type="checkbox" name="fav" value="{{category.category}} " class="get_value" class="form-control"><br>
+                          {{category.category}} 
+                          <input type="checkbox" name="fav" value="{{category.category}} " class="get_value" class="form-control"><br>
 
                           {% endfor %}
                         </div>
@@ -53,7 +54,7 @@
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="password2">Repeat your password</label>
+                        <label class="form-label" for="password2">Confirm Password</label>
                         <input type="password" name="password2"  id="password2" class="form-control" />
                         
                       </div>

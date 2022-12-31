@@ -9,10 +9,9 @@ from bookcafe.model.categories import Category
 
 view = Blueprint('view', __name__)
 
-# @view.route('/')
-# @login_required
-# def index():
-#     return render_template('index.html', user=current_user)
+@view.route('/')
+def index():
+    return render_template('index.html', user=current_user)
 
 @view.route('/books', methods=['GET','POST'])
 def books():
