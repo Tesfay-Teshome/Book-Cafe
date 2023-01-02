@@ -118,7 +118,9 @@ def create_book():
         return redirect(url_for('view.books',user=current_user))
     if request.method == "GET":
         return render_template("addbooks.html",user=current_user)
+    
 
+    
 @api.route("/book", methods=['GET','POST'])
 def get_books():
     book = []

@@ -7,6 +7,7 @@ from bookcafe.model.categories import Category
 
 auth = Blueprint('auth', __name__)
 
+
 @auth.route('/login', methods=['GET','POST'])
 def login():
     
@@ -51,10 +52,10 @@ def sign_up():
         elif len(email) < 4:
             flash('Please enter a working email', category='error')    
         elif password1!=password2:
-            flash('passwprd doesnt match', category='error')
+            flash('Passwords must match', category='error')
           
         elif len(password1) < 4:
-            flash('Password must be greater than 4', category='error')
+            flash('Password must above 7 characters', category='error')
           
         else:
             new_user = User( username = username, email = email, category=favorite, password= generate_password_hash(password1, method='sha256'))
@@ -62,7 +63,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             # login_user(user, remember=True)
-            flash('Registrattion successfull', category='success')
+            flash('Successfully Registered', category='success')
             return redirect(url_for('view.books'))
             
     return render_template("sign_up.html", user=current_user, favorite_category=favorite_category)

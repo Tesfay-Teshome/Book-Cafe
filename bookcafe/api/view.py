@@ -21,6 +21,11 @@ def books():
         return render_template("books.html", user=current_user, all_book=all_book)
     return render_template('books.html', user=current_user)
 
+# Import and implement all data from csv file
+@view.route('/explore', methods=['GET', 'POST'])
+def explore():
+    return render_template('explore.html', user=current_user)
+
 @view.route('/addbooks', methods=['GET','POST'])
 def addbooks():
     categories = Category.query.all()
