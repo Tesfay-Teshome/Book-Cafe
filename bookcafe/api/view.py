@@ -4,6 +4,7 @@ from bookcafe.model.users import User
 from flask_login import current_user, login_required
 from bookcafe.model.books import Book
 from bookcafe.model.categories import Category
+import csv
 
 
 
@@ -24,7 +25,15 @@ def books():
 # Import and implement all data from csv file
 @view.route('/explore', methods=['GET', 'POST'])
 def explore():
-    return render_template('explore.html', user=current_user)
+    # Reading data tables from csv files
+    data = []
+    with open('bookcafe/books.csv') as f:
+        reader = csv.DictReader(f)
+        [data.append(dict(row)) for row in reader]
+            
+            
+    return render_template('explore.html', user=current_user, data=data)
+    
 
 @view.route('/addbooks', methods=['GET','POST'])
 def addbooks():
