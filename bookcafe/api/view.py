@@ -37,7 +37,7 @@ def explore():
         except:
             page = 0
             
-        row_per_page = 20;
+        row_per_page = 50;
         index_form = 0;
         
         for index in range(page - 1): index_form += row_per_page

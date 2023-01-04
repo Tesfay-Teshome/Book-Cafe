@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> 
 {% block content%}
 
 <div class="container">
-    <table id="allbooks" class="table table-dark table-striped" style="width: 100%">
+    <table id="bx-books" class="table table-dark table-striped" style="width: 100%">
         <thead>
             <tr>
                 {% for header in data[0].keys() %}
@@ -23,7 +26,7 @@
                     <td>{{ list(row.values())[4] }}</td>
                     <td>
                         <div class ="col-5" >
-                            <img style="width: 2px, height: 2px" src="{{ row.Image_url }}">
+                            <img  src="{{ row.Image_url }}">
                         </div>
                     </td>
                 </tr>
@@ -31,9 +34,20 @@
         </tbody>
     </table>
 </div>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+
+<div class="text-center">
+    {% for page in total_pages %}
+      {% if request.args.get('page') == str(page + 1) or (request.args.get('page') == none and page == 0) %}
+        <a href="{{str(request.url).split('?')[0] + '?page=' + str(page + 1)}}" class="btn btn-primary mt-4 mb-3">{{page + 1}}</a>
+      {% else %}
+        <a href="{{str(request.url).split('?')[0] + '?page=' + str(page + 1)}}" class="btn btn-outline-primary mt-4 mb-3">{{page + 1}}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#allbooks').DataTable();
+        $('#bx-books').DataTable();
     });
 </script>
 {% endblock%}
