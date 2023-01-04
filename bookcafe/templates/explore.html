@@ -5,7 +5,7 @@
 {% block content%}
 
 <div class="container">
-    <table id="bx-books" class="table table-dark table-striped" style="width: 100%">
+    <table id="bx-books" class="table table-dark table-striped" style="width: 100%" data-filter-control="true" data-show-search-clear-button="true">
         <thead>
             <tr>
                 {% for header in data[0].keys() %}
@@ -25,7 +25,7 @@
                     <td>{{ list(row.values())[3] }}</td>
                     <td>{{ list(row.values())[4] }}</td>
                     <td>
-                        <div class ="col-5" >
+                        <div class ="row-5" >
                             <img  src="{{ row.Image_url }}">
                         </div>
                     </td>
@@ -45,10 +45,8 @@
     {% endfor %}
   </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#bx-books').DataTable();
-    });
+<script type="application/javascript">
+     
 </script>
 {% endblock%}
 
