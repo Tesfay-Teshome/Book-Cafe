@@ -2,37 +2,39 @@
 {% block content%}
 
 <div class="container">
-    <table class="table table-dark table-striped">
+    <table id="allbooks" class="table table-dark table-striped" style="width: 100%">
         <thead>
             <tr>
-                {% for header in data[0].keys%}
+                {% for header in data[0].keys() %}
                 
-                    <th scope="col">{{header}}</th>
-                {% endfor%}
-            
+                    <th scope="col">
+                        <strong>{{header}}</strong>
+                    </th>
+                {% endfor%}            
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ list(row.values())[0] }}</td>
+                    <td>{{ list(row.values())[1] }}</td>
+                    <td>{{ list(row.values())[2] }}</td>
+                    <td>{{ list(row.values())[3] }}</td>
+                    <td>{{ list(row.values())[4] }}</td>
+                    <td>
+                        <div class ="col-5" >
+                            <img style="width: 2px, height: 2px" src="{{ row.Image_url }}">
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+    $(document).ready(function () {
+        $('#allbooks').DataTable();
+    });
+</script>
 {% endblock%}
 

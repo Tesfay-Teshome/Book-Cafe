@@ -27,12 +27,27 @@ def books():
 def explore():
     # Reading data tables from csv files
     data = []
-    with open('bookcafe/books.csv') as f:
+    with open('bookcafe/BX-Books.csv', 'r') as f:
         reader = csv.DictReader(f)
         [data.append(dict(row)) for row in reader]
+        # rows per a page
+        try:
+            page = int(request.args.get('page'))
             
+        except:
+            page = 0
             
-    return render_template('explore.html', user=current_user, data=data)
+        row_per_page = 20;
+        index_form = 0;
+        
+        for index in range(page - 1): index_form += row_per_page
+        
+        index_to = index_form + row_per_page;
+        
+        total_pages = range(int(len(data) / row_per_page) + 1)
+        
+          
+        return render_template('explore.html', user=current_user, data=data[index_form:index_to], total_pages=total_pages,list=list, len=len, str=str)
     
 
 @view.route('/addbooks', methods=['GET','POST'])
