@@ -31,17 +31,17 @@ def explore():
         reader = csv.DictReader(f)
         [data.append(dict(row)) for row in reader]
         # rows per a page
+        
         try:
             page = int(request.args.get('page'))
             
         except:
             page = 0
             
-        row_per_page = 50;
+        row_per_page = 2500;
         index_form = 0;
         
         for index in range(page - 1): index_form += row_per_page
-        
         index_to = index_form + row_per_page;
         
         total_pages = range(int(len(data) / row_per_page) + 1)
