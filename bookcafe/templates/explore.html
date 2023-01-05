@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> 
-{% block content%}
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
 
+{% block content%}
+<h1 align="center">Search Any Book from 100,000 books</h1>
 <div class="container">
-    <table id="bx-books" class="table table-dark table-striped" style="width: 100%" data-filter-control="true" data-show-search-clear-button="true">
+    <table id="data" class=" display table table-dark table-striped" style="width: 100%" data-filter-control="true" data-show-search-clear-button="true">
         <thead>
             <tr>
                 {% for header in data[0].keys() %}
@@ -44,9 +45,11 @@
       {% endif %}
     {% endfor %}
   </div>
-
-<script type="application/javascript">
-     
-</script>
+  
+ <script>
+    $(document).ready(function () {
+    $.noConflict();
+    var table = $('#data').DataTable();
+});</script>
 {% endblock%}
 
