@@ -36,6 +36,9 @@
     </script>  
     
     <link href="{{url_for('static', filename ='login.css')}}" rel="stylesheet">
+
+    <!-- Font For the Landing Page -->
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
     
 
     
@@ -69,11 +72,13 @@
     {% endwith %}
     </div>
   
-    <div class="container">
+    <div class="container"> 
         {% block content %}
-
+            
         {% endblock %}
     </div>
+
+    
 
 
     <!-- Optional JavaScript; choose one of the two! -->
