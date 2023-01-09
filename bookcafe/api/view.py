@@ -12,7 +12,8 @@ view = Blueprint('view', __name__)
 
 @view.route('/')
 def index():
-    return render_template('index.html', user=current_user)
+    Recent_book = Book.query.order_by(Book.id).limit(5).all()
+    return render_template('index.html', user=current_user, book=Recent_book)
 
 @view.route('/books', methods=['GET','POST'])
 def books():
