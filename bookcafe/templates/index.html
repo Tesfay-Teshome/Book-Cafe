@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- <h1>Add Book</h1>
-<h2>top</h2> -->
-<!-- <img src="{{url_for('static',filename ='Background Image.jpg')}}" alt="homePageBackgroundImage" class="backgroundImage"> -->
 
 <div class="cover" 
      style="display: flex;
@@ -33,39 +30,40 @@
             background-size: cover;
             ">
         <div style="padding: 30px 200px 90px;"><h1 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: bold; padding-left: 80px;"> Recently Added Books</h1></div><br>
-        <!-- <div style="color: rgba(251, 248, 248, 0.962); margin: auto;"><img src="/static/book.png" alt="" style="border: 4px; border-radius: 10px; width: 300px; height: 400px; "></div> -->
+        
         <div style="display: flex; gap: 20px;flex-direction: row; width: 700px;height: 300px; padding-right: 90px;">
+            
             <div style="align-self: center;">
                 <img src="/static/book.png" alt="" style="border: 4px; border-radius: 10px; width: 300px; height: 400px; ">
             </div>
-            <div style="align-self: center;">
+
+            <div class = "recent" style="align-self: center;" id="recent">
+
                 {% for books in book_title %}
                 <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
                 font-style: normal; font-size: 20px;"><b>Title:</b> <i style="font-size: 15px;">{{books.title}}</i></h3>
                 {% endfor %}
+
                 {% for books in book_author %}
                 <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
                 font-style: normal; font-size: 20px;"><b>Author:</b> <i style="font-size: 15px;">{{books.author}}</i></h3>
                 {% endfor %}
+
                 {% for books in book_description%}
                 <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
                 font-style: normal; font-size: 20px;"><b>Description:</b> <i style="font-size: 15px;">{{books.description}}</i></h3>
                 {% endfor %}
-                <!-- <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
-                font-style: italic;">Book category</h3><br> -->
             </div>
+
             <div style="align-self: center; position: absolute; right: 0px; width: 350px;">
                 <button class = "nextBook" style="border: 2px; border-radius: 50px; width: 50px; height: 50px; margin: auto;"><b><img src="/static/arrow.webp" alt="next" style="height: 30px;"></b></button>
-        
             </div>
-        </div>
 
-        
-        
+        </div>
+      
 </div>
 
 <br><br>
-
 
 <div class="about" 
      id="aboutId"
@@ -78,27 +76,39 @@
             background-size: cover;
             ">
         <div style="padding-bottom: 30px; font-family: 'Bai Jamjuree', sans-serif; font-weight: bold;"><h1 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: bold;">About</h1></div>
+        
         <p style="color:rgba(251, 248, 248, 0.962); padding-bottom: 80px;font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;">
             This application is designed to solve the problem many people are facing in choice of book on many websites. This book recommendation app was developed using HTML, CSS, JavaScript and Python.  
         </p>
 
         <div class="pics" style="display: flex; flex-wrap: wrap; gap: 80px; padding-left: 45px;">
-            <div class="biruk" ><img src="/static/Biruk1.jpg" alt="" height="200px" style="border: 2px; border-radius: 300px;">
-                <h1 style="font-size: 20px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 20px;"> <a href="https://github.com/Biruk-G3" class="" style="color:rgb(78, 75, 75); font-size: 15px; text-decoration: none;font-weight: normal;">
-                    <b>Biruk Gelelcha</b><br> <i class="">Backend Developer</i></a></h1>
+            
+            <div class="biruk" >
+                <img src="/static/Biruk1.jpg" alt="" height="200px" style="border: 2px; border-radius: 300px;">
+                <h1 style="font-size: 25px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 15px;"> <a href="https://github.com/Biruk-G3" class="" style="color:rgb(149, 146, 146); font-size: 15px; text-decoration: none;font-weight: normal;">
+                    <b>Biruk Gelelcha</b><br></a></h1>
+                    <i class="" style="color: rgba(173, 167, 167, 0.658);">Backend Developer</i>
             </div><br>
-            <div class="dagmawi"><img src="/static/Dagmawi.jpg" alt="" height="200px" style="border: 2px; border-radius: 300px;" >
-                <h1 style="font-size: 20px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 20px;"><a href="https://github.com/Iwamgad" class="" style="color: rgb(78, 75, 75); font-size: 15px; text-decoration: none;font-weight: normal;"><b>Dagmawi Ayneabeba</b><br> <i>Frontend Developer</i></h1>
+
+            <div class="dagmawi">
+                <img src="/static/Dagmawi.jpg" alt="" height="200px" style="border: 2px; border-radius: 300px;" >
+                <h1 style="font-size: 25px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 15px;"><a href="https://github.com/Iwamgad" class="" style="color:rgb(149, 146, 146); font-size: 15px; text-decoration: none;font-weight: normal;"><b>Dagmawi Ayneabeba</b><br> </a></h1>
+                <i style="font-size: 15px; color: rgba(173, 167, 167, 0.658);">Frontend Developer</i>
             </div><br>
-            <div class="tesfay"><img src="/static/Tesfay1.png" alt="" height="200px" style="border: 2px; border-radius: 300px;">
-                <h1 style="font-size: 20px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 20px;"><a href="https://github.com/Tesfay-Teshome" class="" style="color: rgb(78, 75, 75);font-size: 15px; text-decoration: none;font-weight: normal;"><b>Tesfay Teshome</b><br><i>Front and Back end Developer</i></h1>
+
+            <div class="tesfay">
+                <img src="/static/Tesfay1.png" alt="" height="200px" style="border: 2px; border-radius: 300px;">
+                <h1 style="font-size: 25px; font-family: 'Bai Jamjuree', sans-serif; font-weight: normal; padding-top: 20px; padding-bottom: 15px;"><a href="https://github.com/Tesfay-Teshome" class="" style="color:rgb(149, 146, 146);font-size: 15px; text-decoration: none;font-weight: normal;"><b>Tesfay Teshome</b><br></a></h1>
+                <i style="color: rgba(173, 167, 167, 0.658);">Front and Back end Developer</i>
             </div><br>
         </div>
+
 
         <div style="color:rgba(251, 248, 248, 0.962);font-style: italic;font-family: 'Bai Jamjuree', sans-serif; font-weight: bold;">
             2023 ALX Cohort 6 - All rights reserved | GitHub Accounts of The Developers - <a href="https://github.com/Biruk-G3"
              style="color: #ffff; font-size: 15px; text-decoration: none;font-weight: normal;">Biruk Gelelcha</a> / <a href="https://github.com/Iwamgad" style="color: #ffff; font-size: 15px; text-decoration: none;font-weight: normal;">Dagmawi Ayneabeba</a> / <a href="https://github.com/Tesfay-Teshome" style="color: #ffff; font-size: 15px; text-decoration: none;font-weight: normal;">Tesfay Teshome</a>
         </div>
+
 </div>
     
 {% endblock%}

@@ -12,6 +12,8 @@ view = Blueprint('view', __name__)
 
 @view.route('/')
 def index():
+    # 'fc35c00e-1214-482d-9f90-e766cc406937'
+    # Book.query.filter_by(title = 'Lunar Storm').all()
     Recent_book_title = Book.query.order_by(Book.id).limit(1).all()
     Recent_book_author = Book.query.order_by(Book.id).limit(1).all()
     Recent_book_description = Book.query.order_by(Book.id).limit(1).all()
