@@ -19,10 +19,10 @@ class Book(db.Model):
     description = db.Column(db.String(120))
     created_at = db.Column(db.DateTime, default = datetime.utcnow)
 
-    def __init__(self,title,author,category,description):
+    def __init__(self,title,author,category_id,description):
         self.title=title
         self.author=author 
-        self.category=category 
+        self.category_id=category_id 
         self.description=description
     def __repr__(self):
         return self.id

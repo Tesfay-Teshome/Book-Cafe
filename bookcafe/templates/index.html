@@ -25,43 +25,36 @@
             
             justify-content: center;
             padding: 50px;
-            height: 900px;
+            height: 1500px;
             background-image: url(/static/BackImage2.PNG);
             background-size: cover;
             ">
-        <div style="padding: 30px 200px 90px;"><h1 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: bold; padding-left: 80px;"> Recently Added Books</h1></div><br>
+        <div  class="container-xl px-4 mt-4" style="padding: 30px 200px 90px;">
+            <center><h1 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: bold;
+           padding-bottom: 50px;"> Recently Added Books</h1></center><br>
         
-        <div style="display: flex; gap: 20px;flex-direction: row; width: 700px;height: 300px; padding-right: 90px;">
+        <div  class="row" style="display: flex; flex-wrap: wrap;flex-direction: row; width: 1000px;height: 300px; padding-right: 90px;">
             
-            <div style="align-self: center;">
-                <img src="/static/book.png" alt="" style="border: 4px; border-radius: 10px; width: 300px; height: 400px; ">
+
+           
+            {% for books in book %}
+
+           
+        
+            <div class="col-md-4" style="color: #ffff;">
+                <center>
+                <img src="{{url_for('static',filename ='book.png')}}" class="img-fluid rounded-start" 
+                   alt="book-image" style="width: 150px; height: 230px; margin-left: 0px; margin-top: 10px; "></center>
+               <div class="card-body ">
+                <h5 class="card-title" ><span class="badge bg-success">{{books.title}}</span></h5>
+                 <small>Author: {{books.author}}</small>
+                 <p class="card-text"><small class="text-muted">{{books.categoryofbook.category}}</small></p>
+                 </div>
             </div>
-
-            <div class = "recent" style="align-self: center;" id="recent">
-
-                {% for books in book_title %}
-                <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
-                font-style: normal; font-size: 20px;"><b>Title:</b> <i style="font-size: 15px;">{{books.title}}</i></h3>
-                {% endfor %}
-
-                {% for books in book_author %}
-                <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
-                font-style: normal; font-size: 20px;"><b>Author:</b> <i style="font-size: 15px;">{{books.author}}</i></h3>
-                {% endfor %}
-
-                {% for books in book_description%}
-                <h3 style="color: rgba(251, 248, 248, 0.962); font-family: 'Bai Jamjuree', sans-serif; font-weight: normal;
-                font-style: normal; font-size: 20px;"><b>Description:</b> <i style="font-size: 15px;">{{books.description}}</i></h3>
-                {% endfor %}
-            </div>
-
-            <div style="align-self: center; position: absolute; right: 0px; width: 350px;">
-                <button class = "nextBook" style="border: 2px; border-radius: 50px; width: 50px; height: 50px; margin: auto;"><b><img src="/static/arrow.webp" alt="next" style="height: 30px;"></b></button>
-            </div>
-
+            {% endfor %}
         </div>
-      
-</div>
+        </div>
+    </div>
 
 <br><br>
 

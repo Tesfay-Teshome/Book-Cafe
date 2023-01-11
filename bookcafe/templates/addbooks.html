@@ -35,9 +35,7 @@
                                       </button> -->
                                     
                                         {%for cat in categories%}
-                                        <ul class="dropdown-menu"></ul>
-                                        <li class="dropdown-item" name="cat" value="{{cat.id}}">{{cat.category}}</li>
-                                    </ul>
+                                        <input type="radio" name="cat" value="{{cat.id}}">   {{cat.category}}<br>
                                         {%endfor%}
                                     </div>
                                 

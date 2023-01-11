@@ -12,12 +12,8 @@ view = Blueprint('view', __name__)
 
 @view.route('/')
 def index():
-    # 'fc35c00e-1214-482d-9f90-e766cc406937'
-    # Book.query.filter_by(title = 'Lunar Storm').all()
-    Recent_book_title = Book.query.order_by(Book.id).limit(1).all()
-    Recent_book_author = Book.query.order_by(Book.id).limit(1).all()
-    Recent_book_description = Book.query.order_by(Book.id).limit(1).all()
-    return render_template('index.html', user=current_user, book_title=Recent_book_title, book_author=Recent_book_author, book_description=Recent_book_description)
+    Recent_book = Book.query.order_by(Book.id).limit(8).all()
+    return render_template('index.html', user=current_user, book=Recent_book)
 
 @view.route('/books', methods=['GET','POST'])
 def books():
@@ -61,9 +57,9 @@ def addbooks():
     if request.method == 'POST':
         title = request.form.get('title')
         author = request.form.get('author')
-        category_id = request.form.get('cat')
+        category_id = request.form['cat']
         description = request.form.get('description')
-        new_book = Book( title = title, author = author, description= description, category = category_id)
+        new_book = Book( title = title, author = author, description= description, category_id = category_id)
         db.session.add(new_book)
         db.session.commit()
         flash('added successfull', category='success')

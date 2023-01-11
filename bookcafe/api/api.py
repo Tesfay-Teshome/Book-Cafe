@@ -134,7 +134,7 @@ def get_books():
         db.session.add(new_book)
         db.session.commit()
         content = {
-                'id':new_book.id,'title':new_book.title,'author':new_book.author,'category':new_book.category,'description':new_book.description
+                'id':new_book.id,'title':new_book.title,'author':new_book.author,'category':new_book.category_id,'description':new_book.description
             }            
         book.append(content)
         return jsonify({"Book":book})
@@ -156,13 +156,16 @@ def book(id):
     book = []
     content={}
     if request.method == 'GET': 
-        new_book = Book.query.get_or_404(str(id))
-        content = {
+        new_book = Book.query.get(str(id))
+        if new_book:
+            content = {
                 'id':new_book.id,'title':new_book.title,'author':new_book.author,
-                'category':new_book.category,'description':new_book.description,'created_at':new_book.created_at,
+                'category':new_book.category_id,'description':new_book.description,'created_at':new_book.created_at,
             }            
-        book.append(content)
-        return jsonify({"Book":book})
+            book.append(content)
+            return jsonify({"Book":book})
+        else:
+            return jsonify({"Error": "There is no book with this id"})
     if request.method == 'PUT':
         update_book = Book.query.get_or_404(str(id))
         title = request.json['title']
@@ -171,7 +174,7 @@ def book(id):
         description = request.json['description']
         update_book.title = title
         update_book.author = author
-        update_book.category = category
+        update_book.category_id = category
         update_book.description = description
         db.session.commit()
         content = {
