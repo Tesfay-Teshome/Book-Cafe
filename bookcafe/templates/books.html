@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card-header" ><h3>Available Books</h3></div>
-<div class="container-xl px-4 mt-4" >
+<div class="card-header"><h3>Available Books</h3></div>
+<div class="container-xl px-4 mt-4">
     <div class="row">
 
     {% for book in all_book %}
 
 
-    <div class="col-md-4" ><center>
+    <div class="col-md-4" style=" margin: 0px;padding: 20px 20px; border: 0.5px solid rgb(127, 122, 122); border-radius: 5px;"><center>
              <img src="{{url_for('static',filename ='book.png')}}" class="img-fluid rounded-start" 
-                alt="book-image" style="width: 150px; height: 230px; margin-left: 0px; margin-top: 10px; ">
-            <div class="card-body " s>
-             <h5 class="card-title" ><span class="badge bg-success">{{book.title}}</span></h5>
-
-              <p class="card-text">{{book.description}}</p>
+                alt="book-image" style="width: 200px; height: 230px; margin-left: 0px; margin-top: 10px; ">
+            <div class="card-body " style=" padding: 20px 0px;">
+             <h5 class="card-title" style="font-size: 15px; font-family: 'Bai Jamjuree', sans-serif; font-weight: bold;"><span class="badge bg-success">{{book.title}}</span></h5>
+              <p class="card-text" style="  width: 250px; ;padding:0px 2px;  margin: 2px;text-align: justify; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{{book.description}}</p>
+              <!-- <a href="" class="btn" style="display: inline-block; padding: 10px 20px; margin-top: 15px; background: rgba(0,0,20,0.1); text-decoration: none; font-weight: 500px;">Read More</a><br> -->
               <small>Author: {{book.author}}</small>
               <p class="card-text"><small class="text-muted">{{book.categoryofbook.category}}</small></p>
               
